@@ -1,22 +1,27 @@
-import {State} from "../types/state";
+import {DefaultState, State} from "../types/state";
 import {Action, CHANGE_VARIABLE, ChangeVariable} from "../actions/action";
+import {defaultState, initialState} from "./rootReducer";
+import {Reducer} from "redux";
 
 
 function changeVariable(
-    state: State,
+    state: DefaultState,
     action: ChangeVariable
-): State {
+): DefaultState {
     return {
-        ...state,
         variable: action.value
     };
 }
 
-export default function (state: State, action: Action) {
+export const variableReducer: Reducer<State, Action> = (
+    state: DefaultState = defaultState,
+    action: Action,
+    fullState: State
+): DefaultState => {
     switch(action.type){
         case CHANGE_VARIABLE:
             return changeVariable(state, action);
         default:
             return state;
     }
-}
+};

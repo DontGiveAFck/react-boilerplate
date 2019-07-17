@@ -6,7 +6,7 @@ import {changeVariable} from "../../actions/action";
 import { createSelector } from 'reselect'
 
 const variableSelector = createSelector(
-    (state: State): boolean => state.variable,
+    (state: State): boolean => state.default.variable,
     (variable) => ({
         variable
     })
@@ -29,6 +29,7 @@ const mapDispatchToProps = (
 };
 
 export default connect<AppProps>(
+    // @ts-ignore
     mapStateToProps,
     mapDispatchToProps
 )(App);

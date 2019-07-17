@@ -5,7 +5,7 @@ import { cn } from '@bem-react/classname';
 const BLOCK = cn('App');
 
 export interface AppProps {
-    handleClick: (value: boolean) => void;
+    handleClick: (event: any) => void;
     variable: boolean;
 }
 
@@ -20,20 +20,23 @@ class App extends Component<AppProps> {
     }
 
     private getContent = () => {
-        const {
-            handleClick,
-            variable
-        } = this.props;
-
         return (
             <div className={BLOCK('Content')}>
                 <button
-                    // onClick={handleClick}
+                    onClick={this.onButtonClick}
                 >
                     Action
                 </button>
             </div>
         )
+    };
+
+    private onButtonClick = (event: any) => {
+        const {
+            variable,
+            handleClick
+        } = this.props;
+        handleClick(!variable);
     };
 
     private getHeader = () => {

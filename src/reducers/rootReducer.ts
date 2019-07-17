@@ -1,13 +1,17 @@
-import {createStore, combineReducers, ReducersMapObject} from "redux";
-import { State } from '../types/state'
-import reducer from '../reducers/reducer';
-export const initialState: State = {
+import {createStore, combineReducers, Reducer} from "redux";
+import {DefaultState, State} from '../types/state'
+import {variableReducer} from '../reducers/reducer';
+import {Action} from "../actions/action";
+export const defaultState = {
     variable: true
 };
+export const initialState: State = {
+    default: defaultState
+};
 
-const rootReducer = combineReducers(
-    reducer,
-);
+const rootReducer: Reducer = combineReducers<State>({
+    default: variableReducer
+});
 
 export const store = createStore(
     rootReducer,
