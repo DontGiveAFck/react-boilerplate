@@ -6,14 +6,16 @@ import {Reducer} from "redux";
 
 function changeVariable(
     state: DefaultState,
-    action: ChangeVariable
+    action: Action
 ): DefaultState {
     return {
         variable: action.value
     };
 }
 
-export const variableReducer: Reducer<State, Action> = (
+// TODO - избавиться от tsignore
+// @ts-ignore
+export const variableReducer: Reducer<DefaultState, Action> = (
     state: DefaultState = defaultState,
     action: Action,
     fullState: State
