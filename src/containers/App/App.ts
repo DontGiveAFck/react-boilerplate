@@ -1,6 +1,6 @@
 import {State} from "../../types/state";
 import {connect} from "react-redux";
-import App, {AppProps} from "../../components/App/App";
+import App from "../../components/App/App";
 import {Dispatch} from "redux";
 import {changeVariable} from "../../actions/action";
 import { createSelector } from 'reselect'
@@ -28,8 +28,7 @@ const mapDispatchToProps = (
     }
 };
 
-export default connect<AppProps>(
-    // @ts-ignore
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(App);

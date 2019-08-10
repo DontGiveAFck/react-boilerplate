@@ -1,6 +1,6 @@
-import {DefaultState, State} from "../types/state";
-import {Action, CHANGE_VARIABLE, ChangeVariable} from "../actions/action";
-import {defaultState, initialState} from "./rootReducer";
+import {DefaultState} from "../types/state";
+import {Action, CHANGE_VARIABLE} from "../actions/action";
+import {defaultState} from "./rootReducer";
 import {Reducer} from "redux";
 
 
@@ -13,12 +13,9 @@ function changeVariable(
     };
 }
 
-// TODO - избавиться от tsignore
-// @ts-ignore
 export const variableReducer: Reducer<DefaultState, Action> = (
     state: DefaultState = defaultState,
-    action: Action,
-    fullState: State
+    action: Action
 ): DefaultState => {
     switch(action.type){
         case CHANGE_VARIABLE:

@@ -1,7 +1,6 @@
 import {createStore, combineReducers, Reducer, ReducersMapObject} from "redux";
-import {DefaultState, State} from '../types/state'
-import {variableReducer} from '../reducers/reducer';
-import {Action} from "../actions/action";
+import {State} from '../types/state'
+import {variableReducer} from './reducer';
 export const defaultState = {
     variable: true
 };
@@ -10,7 +9,6 @@ export const initialState: State = {
 };
 
 export type Reducers = ReducersMapObject<State>;
-export type LoadedReducers = Partial<Reducers>;
 
 const rootReducer: Reducer = combineReducers<State>({
     default: variableReducer
